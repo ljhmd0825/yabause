@@ -295,9 +295,9 @@ int main(int argc, char** argv)
   if (stat(home_dir.c_str(), &st) == -1) {
     mkdir(home_dir.c_str(), 0700);
   }  
-  std::string bckup_dir = home_dir + "backup.bin";
+  std::string bckup_dir = "/run/muos/storage/save/file/YabaSanshiro-Ext";
   strcpy( buppath, bckup_dir.c_str() );
-  strcpy( s_savepath, home_dir.c_str() );
+  strcpy( s_savepath, "/run/muos/storage/save/state/YabaSanshiro-Ext" );
   g_keymap_filename = home_dir + "keymapv2.json";
 
   std::string current_exec_name = argv[0]; // Name of the current exec program
@@ -601,7 +601,7 @@ int main(int argc, char** argv)
         if( ret == 0 ){
           char pngname[256];
           snprintf(pngname,256,"%s/%s_%d.png", s_savepath, cdip->itemnum, e.user.code);
-          fs::copy(tmpfilename, pngname, fs::copy_options::overwrite_existing );
+          system((std::string("cp -f ") + tmpfilename + " " + pngname).c_str());
         }
         hideMenuScreen();
       }

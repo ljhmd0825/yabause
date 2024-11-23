@@ -356,7 +356,7 @@ int main(int argc, char** argv)
   p->getInt("Resolution",g_resolution_mode);
   p->getInt("Rotate screen resolution",g_rotate_resolution_mode);
   p->getInt("Aspect rate",g_keep_aspect_rate);
-  p->getBool("Rotate screen",false);
+  p->getBool("Rotate screen",true);
 #if defined(__JETSON__)
   p->getBool( "Use compute shader" , true);
 #else
